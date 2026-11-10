@@ -1,55 +1,141 @@
-<%- include('./partials/header') %>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <% if(success.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
-            <span class="inline-block mt-1 mb-1 text-white">
-                <%= success %>
-            </span>
-        </div>
-        <% } %>
+<% if (success && success.length> 0) { %>
+    <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500 z-50">
+        <span class="inline-block mt-1 mb-1 text-white">
+            <%= success[0] %>
+        </span>
+    </div>
+    <% } %>
 
-            <div class="min-h-screen flex flex-col">
-                <div class="container px-10 py-20 flex flex-grow">
-                    <div class="w-[25%] flex h-screen flex-col items-start">
-                        <div class="flex flex-col">
-                            <a class="block w-fit mb-2" href="">All Products</a>
-                            <a class="block w-fit mb-2" href="">Create new product</a>
-                        </div>
-                    </div>
-                    <main class="w-3/4 bg-white p-8 shadow ml-4">
-                        <h2 class="text-xl font-bold mb-4">Create New Product</h2>
-                        <form autocomplete="off" action="/products/create" method="post" enctype="multipart/form-data">
-                            <div class="mb-6">
-                                <h3 class="text-lg font-semibold mb-2">Product Details</h3>
-                                <div class="mb-4">
-                                    <label class="block mb-2 font-medium">Product Image</label>
-                                    <input name="image" type="file" class="py-2 px-4 rounded" value="Select File">
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <input name="name" type="text" placeholder="Product Name"
-                                        class="border p-2 rounded w-full">
-                                    <input name="price" type="text" placeholder="Product Price"
-                                        class="border p-2 rounded w-full">
-                                    <input name="discount" type="text" placeholder="Discount Price"
-                                        class="border p-2 rounded w-full">
-                                </div>
-                            </div>
 
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2">Panel Details</h3>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <input name="bgcolor" type="text" placeholder="Background Color"
-                                        class="border p-2 rounded w-full">
-                                    <input name="panelcolor" type="text" placeholder="Panel Color"
-                                        class="border p-2 rounded w-full">
-                                    <input name="textcolor" type="text" placeholder="Text Color"
-                                        class="border p-2 rounded w-full">
-                                </div>
-                            </div>
-                            <input class="px-5 py-2 rounded mt-3 bg-blue-500 text-white" type="submit"
-                                value="Create New Product">
-                        </form>
-                    </main>
-                </div>
+        <header class="h-20 bg-zinc-900 border-b border-zinc-800
+               px-10 flex items-center sticky top-0 z-50">
+
+            <a href="/shop" class="text-2xl font-semibold tracking-[0.2em] text-white">
+                <span class="text-blue-500">SCATCH</span>
+            </a>
+
+            <div class="ml-auto flex items-center gap-10">
+
+                <nav class="flex items-center gap-10 text-sm text-zinc-400">
+                    <a href="/shop" class="hover:text-white transition">Home</a>
+                    <a href="/shop/cart" class="hover:text-white transition">Cart</a>
+
+                </nav>
+
+                <a href="" class="px-5 py-2 bg-blue-800 hover:bg-blue-700
+                  text-white text-sm rounded-lg transition">
+                    Logout
+                </a>
+
             </div>
-            <%- include('./partials/footer') %>
+        </header>
+        <div class="min-h-screen bg-zinc-950 text-white flex">
+
+            <!-- Sidebar -->
+            <aside class="w-64 min-h-screen bg-zinc-900 border-r border-blue-900/40 p-8 shrink-0">
+
+                <div class="flex flex-col gap-6 mt-4">
+
+                    <a href="/shop" class="text-zinc-300 hover:text-blue-400 transition font-medium">
+                        All Products
+                    </a>
+
+                    <a href="/owners/admin" class="text-white hover:text-blue-400 transition font-medium">
+                        Create New Product
+                    </a>
+
+                </div>
+
+            </aside>
+
+
+            <!-- Main Content -->
+            <main class="flex-1 p-10 md:p-14">
+
+                <div class="max-w-5xl mx-auto bg-zinc-100 text-zinc-900 mt-15
+                    rounded-xl border border-blue-900/30
+                    shadow-2xl p-8 md:p-10">
+
+
+                    <!-- Heading -->
+                    <h1 class="text-2xl font-bold mb-8">
+                        Create New Product
+                    </h1>
+
+
+                    <!-- Product Form -->
+                    <form autocomplete="off" action="/products/create" method="post" enctype="multipart/form-data">
+
+                        <h2 class="text-lg font-semibold mb-5">
+                            Product Details
+                        </h2>
+
+
+                        <!-- Product Image -->
+                        <div class="mb-7">
+
+                            <label class="block font-medium mb-3">
+                                Product Image
+                            </label>
+
+                            <input type="file" name="image" accept="image/*" class="block w-full text-sm text-zinc-600
+
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-md file:border-0
+                        file:bg-blue-800 file:text-white
+                        file:font-medium
+                        hover:file:bg-blue-900
+                        file:cursor-pointer
+                        cursor-pointer" required>
+
+                        </div>
+
+
+                        <!-- Product Name and Price -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+
+                            <input type="text" name="name" placeholder="Product Name" required class="w-full p-3 rounded-md border border-zinc-300
+                               outline-none focus:border-blue-600
+                               focus:ring-2 focus:ring-blue-100
+                               transition">
+
+                            <input type="number" name="price" placeholder="Product Price" required class="w-full p-3 rounded-md border border-zinc-300
+                               outline-none focus:border-blue-600
+                               focus:ring-2 focus:ring-blue-100
+                               transition">
+
+                        </div>
+
+
+                        <!-- Discount Price -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+
+                            <input type="number" name="discount" placeholder="Discount Price" class="w-full p-3 rounded-md border border-zinc-300
+                               outline-none focus:border-blue-600
+                               focus:ring-2 focus:ring-blue-100
+                               transition">
+
+                        </div>
+
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="px-7 py-3 bg-blue-800 text-white
+                           rounded-md font-medium
+                           hover:bg-blue-900
+                           transition duration-200
+                           shadow-md">
+
+                            Create New Product
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </main>
+
+        </div>

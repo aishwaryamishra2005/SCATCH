@@ -1,7 +1,7 @@
 
 const bcrypt = require("bcrypt")
 const userModel = require("../models/user-model")
-const { generatetoken } = require("../utils/generateToken")
+const { generateToken } = require("../utils/generateToken")
 
 module.exports.registerUser = async function (req, res) {
     try {
@@ -18,11 +18,12 @@ module.exports.registerUser = async function (req, res) {
                         fullname
                     })
                     let token = generateToken(user)
-
                     res.cookie("token", token)
-                    res.send("user created successfully")
+                    res.redirect("/shop")
                 }
             })
+
+
         })
     }
 
@@ -31,6 +32,7 @@ module.exports.registerUser = async function (req, res) {
 
     }
 }
+
 module.exports.loginUser = async function (req, res) {
     let { email, password } = req.body
     let user = await userModel.findOne({ email })
@@ -39,9 +41,13 @@ module.exports.loginUser = async function (req, res) {
         if (result) {
             let token = generateToken(user)
             res.cookie("token", token)
-            res.send("You can login")
+            res.redirect("/shop")
         }
         else res.send("Email or password incorrect")
     })
 
+}
+module.exports.logout = function (req, res) {
+    res.cookie("token", "");
+    res.redirect("/");
 }

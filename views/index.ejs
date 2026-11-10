@@ -1,46 +1,114 @@
-<%- include('./partials/header') %>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <% if(error.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
-            <span class="inline-block mt-1 mb-1 text-white">
-                <%= error %>
-            </span>
-        </div>
-        <% } %>
-            <div class="w-full h-screen flex px-20">
-                <div class="w-1/2 flex items-center justify-center h-screen">
-                    <div class="w-full px-32">
-                        <h3 class="text-4xl">welcome to <span class="text-blue-400 font-semibold">Scatch</span></h3>
-                        <h4 class="text-2xl mb-5">create your account</h4>
-                        <form autocomplete="off" action="/users/register" method="post">
-                            <input
-                                class="bg-zinc-100 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
-                                type="text" placeholder="Full Name" name="fullname">
-                            <input
-                                class="bg-zinc-100 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
-                                type="email" placeholder="Email" name="email">
-                            <input
-                                class="bg-zinc-100 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
-                                type="password" placeholder="Password" name="password">
-                            <input class="px-5 rounded-full py-3 mt-2 bg-blue-500 text-white" type="submit"
-                                value="Create My Account">
-                        </form>
-                    </div>
-                </div>
-                <div class="w-1/2 flex items-center justify-center h-screen">
-                    <div class="w-full px-32">
-                        <h4 class="text-2xl capitalize mb-5">login your account</h4>
-                        <form autocomplete="off" action="/users/login" method="post">
-                            <input
-                                class="block bg-zinc-100 w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
-                                type="email" placeholder="Email" name="email">
-                            <input
-                                class="block bg-zinc-100 w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
-                                type="password" placeholder="Password" name="password">
-                            <input class="px-5 block rounded-full py-3 mt-2 bg-blue-500 text-white" type="submit"
-                                value="Login">
-                        </form>
-                    </div>
-                </div>
+<% if(error.length>0){ %>
+    <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+        <span class="inline-block mt-1 mb-1 text-white">
+            <%= error %>
+        </span>
+    </div>
+    <% } %>
+
+        <header class="h-20 bg-zinc-900 border-b border-zinc-800
+               px-10 flex items-center sticky top-0 z-50">
+
+            <a href="/" class="text-2xl font-semibold tracking-[0.2em] text-white">
+                <span class="text-blue-500">SCATCH</span>
+            </a>
+
+
+
             </div>
-            <%- include('./partials/footer') %>
+        </header>
+        <div class="min-h-screen bg-zinc-950">
+            <!-- AUTHENTICATION SECTION -->
+            <main class="min-h-[85vh] flex items-center justify-center px-6 py-12">
+
+                <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+
+                    <!-- REGISTER SECTION -->
+                    <section class="flex flex-col justify-center">
+
+                        <p class="text-sm uppercase tracking-[0.25em] text-blue-500 mb-4">
+                            Join SCATCH
+                        </p>
+
+                        <h1 class="text-4xl md:text-5xl font-semibold text-zinc-500 mb-3">
+                            Welcome to
+                            <span class="text-blue-500">SCATCH.</span>
+                        </h1>
+
+                        <p class="text-zinc-500 text-lg mb-10">
+                            Create your account and discover your style.
+                        </p>
+
+                        <form autocomplete="off" action="/user/register" method="post" class="flex flex-col gap-5">
+
+                            <input type="text" name="fullname" placeholder="Full Name" required class="w-full bg-white border border-zinc-300 rounded-lg
+                               px-5 py-4 text-zinc-800 outline-none
+                               focus:border-blue-700 focus:ring-2
+                               focus:ring-blue-100 transition">
+
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full bg-white border border-zinc-300 rounded-lg
+                               px-5 py-4 text-zinc-800 outline-none
+                               focus:border-blue-700 focus:ring-2
+                               focus:ring-blue-100 transition">
+
+                            <input type="password" name="password" placeholder="Create Password" required class="w-full bg-white border border-zinc-300 rounded-lg
+                               px-5 py-4 text-zinc-800 outline-none
+                               focus:border-blue-700 focus:ring-2
+                               focus:ring-blue-100 transition">
+
+                            <button type="submit" class="w-fit mt-3 px-8 py-4 rounded-full
+                               bg-blue-700 text-white font-medium
+                               hover:bg-blue-800 transition duration-300">
+                                Create My Account
+                            </button>
+
+                        </form>
+                    </section>
+
+
+                    <!-- LOGIN SECTION -->
+                    <section class="flex flex-col justify-center md:border-l
+                            md:border-zinc-300 md:pl-16">
+
+                        <p class="text-sm uppercase tracking-[0.25em] text-blue-500 mb-4">
+                            Welcome Back
+                        </p>
+
+                        <h2 class="text-3xl md:text-4xl font-semibold text-zinc-500 mb-3">
+                            Login to Your Account
+                        </h2>
+
+                        <p class="text-zinc-500 mb-10">
+                            Pick up right where you left off.
+                        </p>
+
+                        <form autocomplete="off" action="/user/login" method="post" class="flex flex-col gap-5">
+
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full bg-white border border-zinc-300 rounded-lg
+                               px-5 py-4 text-zinc-800 outline-none
+                               focus:border-blue-700 focus:ring-2
+                               focus:ring-blue-100 transition">
+
+                            <input type="password" name="password" placeholder="Password" required class="w-full bg-white border border-zinc-300 rounded-lg
+                               px-5 py-4 text-zinc-800 outline-none
+                               focus:border-blue-700 focus:ring-2
+                               focus:ring-blue-100 transition">
+
+                            <button type="submit" class="w-fit mt-3 px-10 py-4 rounded-full
+                               bg-blue-700 text-white font-medium
+                               hover:bg-blue-800 transition duration-300">
+                                Login
+                            </button>
+
+                        </form>
+                    </section>
+
+                </div>
+            </main>
+
+        </div>
+
+        <%- include('./partials/footer') %>

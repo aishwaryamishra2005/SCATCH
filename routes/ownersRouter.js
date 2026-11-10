@@ -21,8 +21,10 @@ if (process.env.NODE_ENV) {
         res.status(201).send(createdOwner)
     })
 }
-router.get("/", function (req, res) {
-    res.send("hey")
+router.get("/admin", function (req, res) {
+    let success = req.flash("success")
+
+    res.render("createproducts", { success })
 })
 
 module.exports = router
