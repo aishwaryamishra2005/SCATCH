@@ -4,7 +4,7 @@ const fetchproducts = require("../models/product-model")
 const isLoggedIn = require("../middlewares/isLoggedIn")
 const userModel = require("../models/user-model")
 
-router.get("/", async function (req, res) {
+router.get("/", isLoggedIn, async function (req, res) {
     let products = await fetchproducts.find()
     let success = req.flash("success")
     let error = req.flash("error")

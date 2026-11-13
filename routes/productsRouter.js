@@ -13,6 +13,7 @@ router.post("/create", upload.single("image"), async function (req, res) {
             discount
         })
         req.flash("success", "Product created successfully ")
+
         res.redirect("/owners/admin")
     }
     catch (err) {

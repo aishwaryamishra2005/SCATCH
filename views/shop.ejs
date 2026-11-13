@@ -1,23 +1,9 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
-<% if (success.length> 0) { %>
-    <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500 z-50">
-        <span class="inline-block mt-1 mb-1 text-white">
-            <%= success[0] %>
-        </span>
-
-
-    </div>
-    <% } %>
-        <% if (error.length> 0) { %>
-            <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-red-500 z-50">
-                <span class="text-white">
-                    <%= error[0] %>
-                </span>
-            </div>
-            <% } %>
 
                 <body class="bg-zinc-950 min-h-screen">
+
+
                     <div class="min-h-screen bg-zinc-950">
 
                         <!-- NAVBAR -->
@@ -35,6 +21,7 @@
                                 <nav class="flex items-center gap-10 text-sm text-zinc-400">
                                     <a href="/shop" class="hover:text-white transition">Home</a>
                                     <a href="/shop/cart" class="hover:text-white transition">Cart</a>
+                                    <a href="/owners/admin" class="hover:text-white transition">Create</a>
 
                                 </nav>
 
@@ -46,6 +33,23 @@
                             </div>
                         </header>
 
+<% if (success.length> 0) { %>
+    <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500">
+
+        <span class="inline-block mt-1 mb-1 text-white">
+            <%= success[0] %>
+        </span>
+
+
+    </div>
+    <% } %>
+        <% if (error.length> 0) { %>
+            <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-red-500 z-50">
+                <span class="text-white">
+                    <%= error[0] %>
+                </span>
+            </div>
+            <% } %>
 
                         <!-- SIDEBAR + MAIN CONTENT -->
                         <div class="flex bg-zinc-950 ">

@@ -1,8 +1,11 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
+<%- include('./partials/header') %>
 
 <% if (success && success.length> 0) { %>
     <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500 z-50">
+
+
         <span class="inline-block mt-1 mb-1 text-white">
             <%= success[0] %>
         </span>
@@ -10,28 +13,6 @@
     <% } %>
 
 
-        <header class="h-20 bg-zinc-900 border-b border-zinc-800
-               px-10 flex items-center sticky top-0 z-50">
-
-            <a href="/shop" class="text-2xl font-semibold tracking-[0.2em] text-white">
-                <span class="text-blue-500">SCATCH</span>
-            </a>
-
-            <div class="ml-auto flex items-center gap-10">
-
-                <nav class="flex items-center gap-10 text-sm text-zinc-400">
-                    <a href="/shop" class="hover:text-white transition">Home</a>
-                    <a href="/shop/cart" class="hover:text-white transition">Cart</a>
-
-                </nav>
-
-                <a href="" class="px-5 py-2 bg-blue-800 hover:bg-blue-700
-                  text-white text-sm rounded-lg transition">
-                    Logout
-                </a>
-
-            </div>
-        </header>
         <div class="min-h-screen bg-zinc-950 text-white flex">
 
             <!-- Sidebar -->
